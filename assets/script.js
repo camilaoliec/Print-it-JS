@@ -22,30 +22,33 @@ const slides = [
 
 const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
+const image = document.querySelector(".banner-img");
+const bannerText = document.querySelector('#banner p');
+const dots = document.querySelectorAll(".dot");
 
 let currentSlide = 0;
-let image = document.querySelector(".banner-img");
-let bannerText = document.querySelector('banner p');
 
 function updateCarousel(){
 	image.src = "./assets/images/slideshow/" + slides[currentSlide]["image"];
-	bannerText.innerHTML = slides[currentSlide]["image"];
+	bannerText.innerHTML = slides[currentSlide]["tagLine"];
+	dots.forEach(dot => dot.classList.remove('dot_selected'));
+	dots[currentSlide].classList.add('dot_selected');
 }
 
 arrowLeft.addEventListener('click', () => {
 	console.log('clique sur la gauche');
-	alert('fleche gauche cliqué')
 	currentSlide = (currentSlide === 0) ? slides.length -1: currentSlide -1;
 	updateCarousel();
 });
+
 arrowRight.addEventListener('click', () => {
 	console.log('Clique sur la droite');
-	alert('Fleche droite cliqué')
 	currentSlide = (currentSlide === slides.length -1) ? 0 : currentSlide + 1; 
 	updateCarousel();
-	console.log('click sur la flece droite');
 });
 
 updateCarousel()
 
 });
+
+   
