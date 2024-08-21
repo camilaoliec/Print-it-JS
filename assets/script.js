@@ -18,16 +18,17 @@ const slides = [
 	}
 ];
 
-// Event listener - fleches
-
+// Eleménts du DOM
 const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
 const image = document.querySelector(".banner-img");
 const bannerText = document.querySelector('#banner p');
 const dots = document.querySelectorAll(".dot");
 
+// Initialisation de l'index de la dispositive courante
 let currentSlide = 0;
 
+// Fonction pour mettre a jour le carousel selon l'index de la dispositive courant
 function updateCarousel(){
 	image.src = "./assets/images/slideshow/" + slides[currentSlide]["image"];
 	bannerText.innerHTML = slides[currentSlide]["tagLine"];
@@ -35,6 +36,7 @@ function updateCarousel(){
 	dots[currentSlide].classList.add('dot_selected');
 }
 
+// Event listener sur chacune des flèches
 arrowLeft.addEventListener('click', () => {
 	console.log('clique sur la gauche');
 	currentSlide = (currentSlide === 0) ? slides.length -1: currentSlide -1;
@@ -47,6 +49,7 @@ arrowRight.addEventListener('click', () => {
 	updateCarousel();
 });
 
+// // Appel initial pour afficher la première diapositive au chargement de la page
 updateCarousel()
 
 });
